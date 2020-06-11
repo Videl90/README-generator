@@ -1,9 +1,6 @@
-const inquirer = require("inquirer");
-const fs = require("fs");
-const util = require("util");
-
-const writeFileAsync = util.promisify(fs.writeFile);
-
+let inquirer = require("inquirer");
+let fs = require("fs");
+let generateMarkdown = require("./utils/generateMarkdown.js");
 
 function promptUserInfo(){
     return inquirer.prompt([
@@ -14,8 +11,8 @@ function promptUserInfo(){
         },
         {
             type: "input",
-            name: "badge",
-            message: "Enter al least one badge"
+            name: "description",
+            message: "What's your project about?"
         },
         {
             type: "input",
@@ -29,53 +26,52 @@ function promptUserInfo(){
         },
         {
             type: "input",
-            name: "table",
-            message: "Enter a table of contents"
-        },
-        {
-            type: "input",
             name: "installation",
-            message: "Give your users an installation guide"
+            message: "Share some steps to install your project"
         },
         {
             type: "input",
-            name: "badge",
-            message: "Enter al least one badge"
+            name: "usage",
+            message: "How can we use your app?"
         },
+        {
+            type: "input",
+            name: "credits",
+            message: "List your contributors to give some credit"
+        },
+        {
+            type: "list",
+            name: "licence",
+            message: "Include a license",
+            choices: ["MIT", "APACHE 2.0", "GPL v3, BSD 3", "None"]
+        },
+        {
+            type: "input",
+            name: "tests",
+            message: "How can a user run a test?"
+        },
+
     ]);
 }
 
-
-
-
-function writeToFile(data) {
-    return `# Project Title
-    ## Description
-    Hola, esta es la descripción
-    ## Table of Contents
-    -[Installation](#installation)
-    -[Usage](#usage)
-    -[Credits](#credits)
-    -[Licence](#license)
-    ## Installation
-    Steps required to install your project
-    ## Usage
-    Instructions to use. Screenshots
-    ## Credits
-    List of collaborators
-    ## License 
-    Let the others know if they can usea your project`  
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, "utf8", function(err){
+        if(err) {
+            throw err;
+        }
+        console.log("Now you have a README file :)")
+    })
 }
 
 async function init() {
     try {
         const userAnswers = await promptUserInfo();
-        const readme = writeToFile(userAnswers);
-        await writeFileAsync("README.md", readme);
+        generateMarkdown(userAnswers);
+        writeToFile("README.md", generateMarkdown(userAnswers));
         console.log("SUCCESS!");
     } catch(err) {
         console.log(err);
     }
-}
+};
 
 init();
