@@ -21,11 +21,6 @@ function promptUserInfo(){
         },
         {
             type: "input",
-            name: "description",
-            message: "Describe your project"
-        },
-        {
-            type: "input",
             name: "installation",
             message: "Share some steps to install your project"
         },
@@ -41,14 +36,19 @@ function promptUserInfo(){
         },
         {
             type: "list",
-            name: "licence",
+            name: "license",
             message: "Include a license",
-            choices: ["MIT", "APACHE 2.0", "GPL v3, BSD 3", "None"]
+            choices: ["MIT", "Apache%202.0", "GPL v3, BSD 3", "None"]
         },
         {
             type: "input",
             name: "tests",
             message: "How can a user run a test?"
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "Share an email for contact!"
         },
 
     ]);

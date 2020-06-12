@@ -1,8 +1,8 @@
 
-# hola
+# Good README.md Generator
 
 ## Description
-hola
+The user will be prompted with some questions about their project, and Github account. This command-line app, will dynamically generate a README.md from user's input answers.
 
 ## Table of Contents
 * [Installation](#installation)
@@ -11,17 +11,23 @@ hola
 * [Licence](#license)
 * [Tests](#tests)
 ## Installation
-hola
+You will need to instal inquirer package
 ## Usage
-hola
+Just run the command line "node index.js"
 ## Credits
-hola
+Lorena Santos Alaña
 ## License 
-GPL v3, BSD 3
+ 
+![GitHub license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)
 ## Tests
-hola
+Just Test
+
 ## NPM Package
 
 [![npm version](https://badge.fury.io/js/inquirer.svg)](https://badge.fury.io/js/inquirer)
 
+## CONTACT
+Feel free to contact me anytime :)
+
 ![Profile Image](https://github.com/Videl90.png?size=50)
+E-mail: lorena.sa.0117@gmail.com
